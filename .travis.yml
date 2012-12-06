@@ -4,9 +4,9 @@ php:
   - 5.3
 
 before_script:
-  - ls -l
-  - wget "http://downloads.sourceforge.net/project/livestreet/LiveStreet%201.0/LiveStreet%201.0.1/LiveStreet_1.0.1.zip?r=http%3A%2F%2Flivestreetcms.com%2Fdownload%2F&ts=1354806893&use_mirror=netcologne" -O ls.zip
-  - unzip -x ls.zip
+  - mkdir -p plugins/sitemap
+  - mv * plugins/sitemap
+  - git clone git://github.com/stfalcon-studio/livestreet.git
   - rm -rf ./install
   - ls -l 
 
