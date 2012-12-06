@@ -4,9 +4,10 @@ php:
   - 5.3
 
 before_script:
-  - mkdir -p plugins/sitemap
-  - mv * plugins/sitemap
+  - mkdir -p /tmp/plugins/sitemap
+  - mv * /tmp/plugins/sitemap
   - git clone git://github.com/stfalcon-studio/livestreet.git
+  - mkdir -p plugins/sitemap && cp -a /tmp/plugins/sitemap/* plugins/sitemap
   - rm -rf ./install
   - ls -l 
 
