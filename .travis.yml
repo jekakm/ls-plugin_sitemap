@@ -1,0 +1,32 @@
+language: php
+
+php:
+  - 5.3
+
+before_script:
+  - ls -l
+  - wget "http://downloads.sourceforge.net/project/livestreet/LiveStreet%201.0/LiveStreet%201.0.1/LiveStreet_1.0.1.zip?r=http%3A%2F%2Flivestreetcms.com%2Fdownload%2F&ts=1354806893&use_mirror=netcologne" -O ls.zip
+  - unzip -x ls.zip
+  - rm -rf ./install
+  - ls -l 
+
+  # change application working folders for write access
+  - chmod -R 0777 ./tmp
+  - chmod -R 0777 ./uploads
+  - chmod -R 0777 ./templates/cache/
+  - chmod -R 0777 ./templates/compiled/
+
+  # install required PHP stuff
+  - sudo apt-get install php5 php5-cli php5-mysql php5-mcrypt php5-xsl php5-xdebug php-apc php5-gd php5-curl php5-intl
+
+  # launch apache, MySQL and PHPUnit Selenium installers
+  - cp ./config/config.test.php.dist config/config.test.php
+  - cp ./config/config.test.php.dist config/config.local.php
+  - sudo sed -i s/sql-mode/#sql-mode/ /etc/mysql/my.cnf
+  - sudo /etc/init.d/mysql restart
+  - sleep 5
+
+  - wget -S http://livestreet.test
+
+
+script: HTTP_APP_ENV=test php tests/behat/behat.phar -c tests/behat/behat.yml
