@@ -3,6 +3,7 @@ Feature: Greeting plugin standart features BDD
 
 
     Scenario: Sitemap LiveStreet CMS
+	Then check is plugin active "sitemap"
         Given I am on "/sitemap/"
             Then the response should contain "/sitemap_general_1.xml"
             And the response should contain "/sitemap_blogs_1.xml"
