@@ -34,5 +34,14 @@ before_script:
   - wget -S http://livestreet.test
   - rm -rf ./install
 
+  # start virtual display
+  - sh -e /etc/init.d/xvfb start
+  - sleep 5
+
+  # download and launch Selenium
+  - wget -O /tmp/selenium-server-standalone.jar http://selenium.googlecode.com/files/selenium-server-standalone-2.25.0.jar
+  - java -jar /tmp/selenium-server-standalone.jar > /dev/null &
+  - sleep 5
+
 
 script: HTTP_APP_ENV=test php tests/behat/behat.phar -c tests/behat/behat.yml
