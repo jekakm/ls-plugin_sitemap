@@ -11,7 +11,7 @@ before_script:
   - mkdir -p plugins/sitemap && cp -a /tmp/plugins/sitemap/* plugins/sitemap
   - rm -rf ./install
   - ls -l
-  - cat tests/behat/behat.yml 
+  - echo "sitemap" > ./plugins/plugins.dat
 
   # change application working folders for write access
   - chmod -R 0777 ./tmp
@@ -23,6 +23,9 @@ before_script:
   - sudo apt-get install php5 php5-cli php5-mysql php5-mcrypt php5-xsl php5-xdebug php-apc php5-gd php5-curl php5-intl
 
   # launch apache, MySQL and PHPUnit Selenium installers
+  - ./tests/travis/apache_setup.sh
+  - ./tests/travis/mysql_setup.sh
+  - mysql -u root -e "USE social_test; SHOW TABLES;" | wc -l
   - cp ./config/config.test.php.dist config/config.test.php
   - cp ./config/config.test.php.dist config/config.local.php
   - sudo sed -i s/sql-mode/#sql-mode/ /etc/mysql/my.cnf
