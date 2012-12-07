@@ -11,6 +11,7 @@ before_script:
   - mkdir -p plugins/sitemap && cp -a /tmp/plugins/sitemap/* plugins/sitemap
   - ls -la 
   - echo "sitemap" > ./plugins/plugins.dat
+  - cp tests/behat/behat.phar plugins/sitemap/tests/behat
 
   # change application working folders for write access
   - chmod -R 0777 ./tmp
@@ -44,4 +45,4 @@ before_script:
   - sleep 5
 
 
-script: HTTP_APP_ENV=test php tests/behat/behat.phar -c tests/behat/behat.yml
+script: HTTP_APP_ENV=test cd plugins/sitemap/tests/behat && php behat.phar -c behat.yml
