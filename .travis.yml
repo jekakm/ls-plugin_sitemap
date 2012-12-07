@@ -9,8 +9,7 @@ before_script:
   - mkdir /tmp/ls && git clone git://github.com/stfalcon-studio/livestreet.git /tmp/ls
   - cp -a /tmp/ls/* ./
   - mkdir -p plugins/sitemap && cp -a /tmp/plugins/sitemap/* plugins/sitemap
-  - rm -rf ./install
-  - ls -l
+  - ls -la 
   - echo "sitemap" > ./plugins/plugins.dat
 
   # change application working folders for write access
@@ -33,6 +32,7 @@ before_script:
   - sleep 5
 
   - wget -S http://livestreet.test
+  - rm -rf ./install
 
 
 script: HTTP_APP_ENV=test php tests/behat/behat.phar -c tests/behat/behat.yml
