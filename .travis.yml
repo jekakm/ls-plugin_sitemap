@@ -10,7 +10,8 @@ before_script:
   - cp -a /tmp/ls/* ./
   - mkdir -p plugins/sitemap && cp -a /tmp/plugins/sitemap/* plugins/sitemap
   - rm -rf ./install
-  - ls -l 
+  - ls -l
+  - cat tests/behat/behat.yml 
 
   # change application working folders for write access
   - chmod -R 0777 ./tmp
