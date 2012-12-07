@@ -32,7 +32,8 @@ before_script:
   - sudo /etc/init.d/mysql restart
   - sleep 5
 
-  - wget -S http://livestreet.test
+  - wget -S http://livestreet.test/sitemap -O /tmp/sitemap_test.html
+  - cat /tmp/sitemap_test.html
 
   # start virtual display
   - sh -e /etc/init.d/xvfb start
