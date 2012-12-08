@@ -4,12 +4,12 @@ php:
   - 5.3
 
 before_script:
-  - mkdir -p /tmp/plugins/ls-plugin_sitemap
-  - mv * /tmp/plugins/ls-plugin_sitemap
+  - mkdir -p /tmp/plugins/sitemap
+  - mv * /tmp/plugins/sitemap
   - mkdir /tmp/ls && git clone git://github.com/stfalcon-studio/livestreet.git /tmp/ls
   - cp -a /tmp/ls/* ./
   - cp /tmp/ls/.htaccess ./
-  - mkdir -p plugins/ls-plugin_sitemap && cp -a /tmp/plugins/ls-plugin_sitemap/* plugins/ls-plugin_sitemap
+  - mkdir -p plugins/sitemap && cp -a /tmp/plugins/sitemap/* plugins/sitemap
   - echo "sitemap" > ./plugins/plugins.dat
 
   # change application working folders for write access
@@ -49,4 +49,4 @@ before_script:
   - sleep 5
 
 
-script: HTTP_APP_ENV=test cd tests/behat/ && php behat.phar --config='../../plugins/ls-plugin_sitemap/tests/behat/behat.yml'
+script: HTTP_APP_ENV=test cd tests/behat/ && php behat.phar --config='../../plugins/sitemap/tests/behat/behat.yml'
