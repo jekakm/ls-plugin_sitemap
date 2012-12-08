@@ -34,8 +34,10 @@ before_script:
   - rm -rf ./install
   - ls -la
   - cat ./.htaccess
-  #- wget -S http://livestreet.test/sitemap -O /tmp/sitemap_test.html
-  #- cat /tmp/sitemap_test.html
+  - wget -S http://livestreet.test/sitemap/ -O /tmp/sitemap_test.html
+  - cat /tmp/sitemap_test.html
+  - wget -S http://livestreet.test/ -O /tmp/ls_test.html
+  - cat /tmp/ls_test.html
 
   # start virtual display
   - sh -e /etc/init.d/xvfb start
