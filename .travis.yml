@@ -10,7 +10,6 @@ before_script:
   - cp -a /tmp/ls/* ./
   - cp /tmp/ls/.htaccess ./
   - mkdir -p plugins/ls-plugin_sitemap && cp -a /tmp/plugins/ls-plugin_sitemap/* plugins/ls-plugin_sitemap
-  - ls -la 
   - echo "sitemap" > ./plugins/plugins.dat
 
   # change application working folders for write access
@@ -32,6 +31,9 @@ before_script:
   - sudo /etc/init.d/mysql restart
   - sleep 5
 
+  - rm -rf ./install
+  - ls -la
+  - cat ./.htaccess
   - wget -S http://livestreet.test/sitemap -O /tmp/sitemap_test.html
   - cat /tmp/sitemap_test.html
 
